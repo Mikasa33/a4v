@@ -1,0 +1,30 @@
+{
+  "name": "@a4v/commitline-config",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "stub": "pnpm unbuild --stub",
+    "postinstall": "pnpm stub"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "cz-git": "^1.10.0",
+    "czg": "^1.10.0",
+    "unbuild": "^2.0.0"
+  }
+}
