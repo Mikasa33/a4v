@@ -1,0 +1,28 @@
+{
+  "name": "@a4v/preference",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@a4v/utils": "workspace:*",
+    "@vueuse/core": "^11.1.0",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.5.10"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "@types/lodash-es": "^4.17.12"
+  }
+}
