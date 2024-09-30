@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en,en-US",
+  "allowCompoundWords": true,
+  "words": [
+    "a4v",
+    "antfu",
+    "commitlint",
+    "iconify",
+    "intlify",
+    "mikasa33",
+    "pnpm",
+    "pinia",
+    "stylelint",
+    "tailwindcss",
+    "unocss",
+    "unplugin",
+    "vite",
+    "vitejs",
+    "vitest",
+    "vitepress",
+    "vueuse"
+  ],
+  "ignorePaths": [
+    "**/*.log",
+    "**/dist/**",
+    "**/node_modules/**",
+    "pnpm-lock.yaml"
+  ]
+}
