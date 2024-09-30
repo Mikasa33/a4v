@@ -1,0 +1,20 @@
+{
+  "extends": "@a4v/tsconfig/web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["src/*"]
+    },
+    "types": [
+      "vite/client",
+      "vite-plugin-vue-layouts/client",
+      "unplugin-vue-router/client",
+      "@intlify/unplugin-vue-i18n/messages",
+      "naive-ui/volar"
+    ]
+  },
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+}

@@ -1,0 +1,6 @@
+export { default as Collapse } from './Collapse.vue'
+export { default as ColorMode } from './ColorMode.vue'
+export { default as Fullscreen } from './Fullscreen.vue'
+export { default as Github } from './Github.vue'
+export { default as Locale } from './Locale.vue'
+export { default as User } from './User.vue'
