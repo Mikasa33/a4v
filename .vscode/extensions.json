@@ -1,3 +1,14 @@
 {
-  "recommendations": ["Vue.volar"]
+  "recommendations": [
+    "antfu.iconify",
+    "antfu.unocss",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "lokalise.i18n-ally",
+    "naumovs.color-highlight",
+    "Vue.volar",
+    "streetsidesoftware.code-spell-checke",
+    "stylelint.vscode-stylelint"
+  ]
 }
