@@ -1,0 +1,12 @@
+{
+  "extends": "@a4v/tsconfig/web.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ]
+}

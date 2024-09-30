@@ -1,0 +1,15 @@
+{
+  "name": "a4v-docs",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.11.0",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "vitepress": "^1.3.4"
+  }
+}
