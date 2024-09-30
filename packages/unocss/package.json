@@ -1,0 +1,27 @@
+{
+  "name": "@a4v/unocss",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "stub": "pnpm unbuild --stub",
+    "postinstall": "pnpm stub"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "unbuild": "^2.0.0",
+    "unocss": "^0.62.4"
+  }
+}
