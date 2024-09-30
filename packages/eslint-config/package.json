@@ -1,0 +1,30 @@
+{
+  "name": "@a4v/eslint-config",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "stub": "pnpm unbuild --stub",
+    "postinstall": "pnpm stub"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "@antfu/eslint-config": "^3.7.3",
+    "eslint": "^9.9.1",
+    "eslint-flat-config-utils": "^0.4.0",
+    "eslint-plugin-format": "^0.1.2",
+    "unbuild": "^2.0.0"
+  }
+}
