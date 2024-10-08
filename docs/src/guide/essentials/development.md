@@ -58,7 +58,7 @@ npm 脚本是项目常见的配置，用于执行一些常见的任务，比如�
     // 删除所有的 node_modules、pnpm-lock.yaml
     "clean": "node ./scripts/clean.js",
     // 检查拼写
-    "cspell": "cspell lint **/*.ts **/README.md --no-progress",
+    "check": "cspell lint **/*.ts **/README.md --no-progress",
     // 生成标准化的 git commit message
     "cz": "czg",
     // 启动 web 项目
@@ -66,9 +66,9 @@ npm 脚本是项目常见的配置，用于执行一些常见的任务，比如�
     // 启动文档项目
     "dev:docs": "pnpm --filter a4v-docs dev",
     // 检查代码
-    "eslint": "eslint .",
+    "lint": "eslint .",
     // 检查代码并修复
-    "eslint:fix": "pnpm eslint --fix",
+    "lint:fix": "pnpm eslint --fix",
     // 预览 web 项目
     "preview:web": "pnpm --filter a4v-web preview",
     // 预览文档项目
@@ -80,9 +80,9 @@ npm 脚本是项目常见的配置，用于执行一些常见的任务，比如�
     // 删除所有的 node_modules、pnpm-lock.yaml，重新安装依赖
     "reinstall": "pnpm clean --del-lock && pnpm install",
     // 样式检查
-    "stylelint": "stylelint \"**/*.{css,html,sass,scss,vue}\" \"**/.vitepress/**/*.{css,html,sass,scss,vue}\"",
+    "style": "stylelint \"**/*.{css,html,sass,scss,vue}\" \"**/.vitepress/**/*.{css,html,sass,scss,vue}\"",
     // 样式检查并修复
-    "stylelint:fix": "pnpm stylelint --fix"
+    "style:fix": "pnpm stylelint --fix"
   }
 }
 ```
