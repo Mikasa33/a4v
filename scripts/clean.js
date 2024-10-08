@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { errorLog, successLog } from './log.js'
+import { consola } from 'consola'
 
 const rootDir = process.cwd()
 
@@ -18,7 +18,7 @@ async function recursiveCleanTargets(currentDir, targets) {
       if (targets.includes(item)) {
         // 匹配到目标目录或文件时直接删除
         fs.rmSync(itemPath, { force: true, recursive: true })
-        successLog(`Deleted: ${itemPath}`)
+        consola.success(`Deleted: ${itemPath}`)
       }
       try {
         const stat = fs.lstatSync(itemPath)
@@ -29,7 +29,7 @@ async function recursiveCleanTargets(currentDir, targets) {
       catch {}
     }
     catch (error) {
-      errorLog(`Error handling item ${item} in ${currentDir}: ${error.message}.`)
+      consola.error(`Error handling item ${item} in ${currentDir}: ${error.message}.`)
     }
   }
 }
@@ -41,12 +41,12 @@ async function recursiveCleanTargets(currentDir, targets) {
   if (deleteLockFile) {
     targets.push('pnpm-lock.yaml')
   }
-  successLog(`Starting cleanup of targets: ${targets.join(', ')} from root: ${rootDir}.`)
+  consola.success(`Starting cleanup of targets: ${targets.join(', ')} from root: ${rootDir}.`)
   try {
     await recursiveCleanTargets(rootDir, targets)
-    successLog('Cleanup process completed.')
+    consola.success('Cleanup process completed.')
   }
   catch (error) {
-    errorLog(`\x1B[31mUnexpected error during cleanup: ${error.message}.`)
+    consola.error(`\x1B[31mUnexpected error during cleanup: ${error.message}.`)
   }
 })()
