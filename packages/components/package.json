@@ -9,7 +9,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
@@ -20,7 +20,7 @@
     "@vueuse/core": "^11.1.0",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.40.1",
-    "vue": "^3.5.10"
+    "vue": "^3.5.11"
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",

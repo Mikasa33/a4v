@@ -9,7 +9,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
@@ -23,8 +23,8 @@
     "@a4v/tsconfig": "workspace:*",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "cz-git": "^1.10.0",
-    "czg": "^1.10.0",
+    "cz-git": "^1.10.1",
+    "czg": "^1.10.1",
     "unbuild": "^2.0.0"
   }
 }

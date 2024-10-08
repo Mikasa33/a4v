@@ -9,7 +9,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
-    "@stylistic/stylelint-plugin": "^3.1.0",
+    "@stylistic/stylelint-plugin": "^3.1.1",
     "postcss-html": "^1.7.0",
     "postcss-scss": "^4.0.9",
     "stylelint": "^16.9.0",
