@@ -19,7 +19,7 @@ export function addUnit(value?: Numeric): string | undefined {
 export function convertPath2Object(path: string, value?: any) {
   const obj: any = {}
   let current = obj
-  const parts = path.split('.')
+  const parts: any[] = path.split('.')
   for (let i = 0; i < parts.length; i++) {
     if (i === parts.length - 1) {
       current[parts[i]] = value

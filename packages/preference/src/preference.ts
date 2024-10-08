@@ -1,7 +1,8 @@
 import type { DeepPartial } from '@a4v/types'
-import type { App, MaybeRefOrGetter } from 'vue'
 import type { PreferenceInfo, ThemeColorPreferenceInfo } from './types'
-import { cloneDeep, merge } from 'lodash-es'
+import { useColorMode, useDark, useStorage } from '@vueuse/core'
+import { cloneDeep, kebabCase, merge } from 'lodash-es'
+import { type App, computed, type ComputedRef, type MaybeRefOrGetter, ref, type Ref, type WritableComputedRef } from 'vue'
 import { defaultPreference } from './constants'
 import { preferenceInjectionKey } from './context'
 import { usePreferenceStore } from './useApi'
@@ -66,22 +67,33 @@ export function createPreference(options: PreferenceOption = {}) {
       },
     })
 
+  const themeColor = computed<ThemeColorPreferenceInfo>(() => isDark.value ? storage.value.darkThemeColor : storage.value.lightThemeColor)
+
+  function setCSSVariables() {
+    const root = document.documentElement
+    if (!root) {
+      return
+    }
+
+    Object.entries(themeColor.value).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(`--${kebabCase(key)}`, value)
+    })
+  }
+
   function setColorMode() {
     colorMode.value = storage.value.colorMode
   }
 
   function reset() {
-    storage.value = cloneDeep(store.value)
-    setColorMode()
+    update(cloneDeep(store.value))
   }
   function update(value: DeepPartial<PreferenceInfo>) {
     storage.value = merge(storage.value, value)
+    setCSSVariables()
     if (value.colorMode) {
       setColorMode()
     }
   }
-
-  const themeColor = computed<ThemeColorPreferenceInfo>(() => isDark.value ? storage.value.darkThemeColor : storage.value.lightThemeColor)
 
   const preference: Preference = {
     info: storage,
@@ -94,6 +106,7 @@ export function createPreference(options: PreferenceOption = {}) {
     },
   }
 
+  setCSSVariables()
   setColorMode()
 
   return preference

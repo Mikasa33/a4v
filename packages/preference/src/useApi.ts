@@ -1,5 +1,7 @@
 import type { Preference } from './preference'
 import type { PreferenceInfo } from './types'
+import { createGlobalState } from '@vueuse/core'
+import { inject, ref } from 'vue'
 import { defaultPreference } from './constants'
 import { preferenceInjectionKey } from './context'
 

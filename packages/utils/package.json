@@ -9,19 +9,24 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "scripts": {
+    "stub": "pnpm unbuild --stub",
+    "postinstall": "pnpm stub"
+  },
   "dependencies": {
     "@vueuse/core": "^11.1.0",
     "lodash-es": "^4.17.21",
-    "vue": "^3.5.10"
+    "vue": "^3.5.11"
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
-    "@types/lodash-es": "^4.17.12"
+    "@types/lodash-es": "^4.17.12",
+    "unbuild": "^2.0.0"
   }
 }
