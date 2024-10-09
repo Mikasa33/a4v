@@ -7,32 +7,32 @@ export const menus = [
     icon: 'i-icon-park-outline-home',
   },
   {
-    key: '/document',
+    key: '/demo/document',
     label: '文档',
     icon: 'i-icon-park-outline-book',
     children: [
       {
-        key: '/document/vite',
+        key: '/demo/document/vite',
         label: 'Vite 文档',
         icon: 'i-logos:vitejs',
       },
       {
-        key: '/document/vue',
+        key: '/demo/document/vue',
         label: 'Vue 文档',
         icon: 'i-logos:vue',
       },
       {
-        key: '/document/vueuse',
+        key: '/demo/document/vueuse',
         label: 'VueUse 文档',
         icon: 'i-logos:vueuse',
       },
       {
-        key: '/document/unocss',
+        key: '/demo/document/unocss',
         label: 'UnoCSS 文档',
         icon: 'i-logos:unocss',
       },
       {
-        key: '/document/naiveui',
+        key: '/demo/document/naiveui',
         label: 'Naive UI 文档（外链）',
         icon: 'i-logos:naiveui',
         url: 'https://www.naiveui.com/zh-CN',
