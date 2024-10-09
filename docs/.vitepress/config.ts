@@ -69,6 +69,15 @@ const sidebarGuide: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: '深入',
+    items: [
+      {
+        link: 'in-depth/loading',
+        text: '全局 Loading',
+      },
+    ],
+  },
+  {
     text: '工程',
     items: [
       {
