@@ -14,7 +14,7 @@ async function getLoadingRawByHtmlTemplate(loadingTemplate: string, title: strin
 
   if (!fs.existsSync(appLoadingPath)) {
     const __dirname = fileURLToPath(new URL('.', import.meta.url))
-    appLoadingPath = path.join(__dirname, './template.html')
+    appLoadingPath = path.join(__dirname, './assets/loading.html')
   }
 
   const appLoadingFile = await fsp.readFile(appLoadingPath, 'utf8')
@@ -54,7 +54,7 @@ export async function VitePluginAppLoading(options: { loadingTemplate?: string, 
 
   return {
     enforce: 'pre',
-    name: 'vite:loading',
+    name: 'vite:app-loading',
     transformIndexHtml: {
       handler(html) {
         const re = /<body\s*>/

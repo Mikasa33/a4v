@@ -27,6 +27,6 @@
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
     "@types/lodash-es": "^4.17.12",
-    "unbuild": "^2.0.0"
+    "unbuild": "^3.0.0-rc.11"
   }
 }

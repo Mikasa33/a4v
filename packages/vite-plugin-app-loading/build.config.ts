@@ -5,10 +5,11 @@ export default defineBuildConfig({
   declaration: true,
   entries: [
     'src/index',
+    'src/utils',
     {
-      builder: 'mkdist',
-      input: 'src/template.html',
-      outDir: 'dist/template.html',
+      builder: 'copy',
+      input: 'src/assets',
+      outDir: 'dist/assets',
     },
   ],
   externals: ['vite'],
