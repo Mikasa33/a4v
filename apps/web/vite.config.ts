@@ -22,6 +22,7 @@ export default defineConfig(async (config) => {
 
   return {
     plugins: [
+      // 必须在 Vue 之前注册
       // https://uvr.esm.is/introduction.html
       VueRouter({
         dts: 'src/typed-router.d.ts',
@@ -42,6 +43,24 @@ export default defineConfig(async (config) => {
 
       // https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx
       VueJsx(),
+
+      // https://vue-i18n.intlify.dev/guide/advanced/optimization.html
+      VueI18n({
+        compositionOnly: true,
+        fullInstall: true,
+        include: [
+          'locales/**',
+        ],
+        runtimeOnly: true,
+      }),
+
+      // https://github.com/unplugin/unplugin-vue-components
+      VueComponent({
+        dts: 'src/components.d.ts',
+        resolvers: [
+          NaiveUiResolver(),
+        ],
+      }),
 
       // https://github.com/unplugin/unplugin-auto-import
       AutoImport({
@@ -70,32 +89,15 @@ export default defineConfig(async (config) => {
         dts: 'src/auto-imports.d.ts',
       }),
 
+      // 必须在 vite-plugin-html 之前注册
+      // https://devtools-next.vuejs.org/guide/vite-plugin
+      env.VITE_DEVTOOLS === 'true' && VueDevTools(),
+
       // https://github.com/vbenjs/vite-plugin-html
       VitePluginHtml(),
 
-      VitePluginAppLoading({
+      env.VITE_APP_LOADING === 'true' && VitePluginAppLoading({
         title: env.VITE_APP_TITLE,
-      }),
-
-      // https://github.com/unplugin/unplugin-vue-components
-      VueComponent({
-        dts: 'src/components.d.ts',
-        resolvers: [
-          NaiveUiResolver(),
-        ],
-      }),
-
-      // https://devtools-next.vuejs.org/guide/vite-plugin
-      VueDevTools(),
-
-      // https://vue-i18n.intlify.dev/guide/advanced/optimization.html
-      VueI18n({
-        runtimeOnly: true,
-        compositionOnly: true,
-        fullInstall: true,
-        include: [
-          'locales/**',
-        ],
       }),
 
       // https://unocss.dev/integrations/vite
