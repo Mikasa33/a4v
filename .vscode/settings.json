@@ -20,6 +20,11 @@
     "vueuse"
   ],
 
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "zh-CN",
+  "i18n-ally.sortKeys": true,
+
   // Disable the default formatter
   "prettier.enable": false,
   "editor.formatOnSave": false,
@@ -68,5 +73,8 @@
     "sass",
     "scss",
     "vue"
+  ],
+  "i18n-ally.localesPaths": [
+    "apps/web/locales"
   ]
 }

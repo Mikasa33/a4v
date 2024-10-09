@@ -1,12 +1,21 @@
 <script setup lang="ts">
+const { t } = useI18n()
 </script>
 
 <template>
   <div class="m-16px">
     <NCard :bordered="false">
-      <NButton>
-        Hello World
-      </NButton>
+      <NFlex>
+        <NButton>
+          {{ t('hello') }}
+        </NButton>
+
+        <NDatePicker />
+      </NFlex>
+
+      <NDivider />
+
+      <NDataTable />
     </NCard>
   </div>
 </template>

@@ -2,8 +2,22 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { AConfigProvider } from '@a4v/components'
 import { usePreference } from '@a4v/preference'
-import { darkTheme } from 'naive-ui'
+import { darkTheme, dateEnUS, dateZhCN, enUS, zhCN } from 'naive-ui'
 import { createHoverColor, createPressedColor } from 'naive-ui/es/_utils/color'
+
+const locales: Record<string, any> = {
+  'zh-CN': zhCN,
+  'en': enUS,
+}
+const dateLocales: Record<string, any> = {
+  'zh-CN': dateZhCN,
+  'en': dateEnUS,
+}
+
+const { locale: i18nLocale } = useI18n()
+
+const dateLocale = computed(() => dateLocales[i18nLocale.value])
+const locale = computed(() => locales[i18nLocale.value])
 
 const { isDark, themeColor } = usePreference()
 
@@ -37,7 +51,7 @@ const themeOverrides = computed<GlobalThemeOverrides>(() => {
 </script>
 
 <template>
-  <AConfigProvider :theme :theme-overrides>
+  <AConfigProvider :date-locale :locale :theme :theme-overrides>
     <RouterView />
   </AConfigProvider>
 </template>
