@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { CardProps, DrawerProps } from 'naive-ui'
 import type { DrawerSlots } from './types'
-import { pickProps } from '@a4v/utils'
 import { NDrawer, drawerProps as nDrawerProps } from 'naive-ui'
 import { APopupCard, popupCardProps } from '../popup-card'
+import { pickProps } from '../utils'
 import { drawerProps } from './props'
 
 const props = defineProps(drawerProps)

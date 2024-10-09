@@ -1,5 +1,9 @@
 import type { DefaultTheme, HeadConfig } from 'vitepress'
-import { defineConfig } from 'vitepress'
+import VueJsx from '@vitejs/plugin-vue-jsx'
+import UnoCSS from 'unocss/vite'
+import { defineConfig, postcssIsolateStyles } from 'vitepress'
+
+const fileAndStyles: Record<string, string> = {}
 
 const head: HeadConfig[] = [
   ['meta', { content: 'Mikasa33', name: 'author' }],
@@ -34,6 +38,7 @@ const search: DefaultTheme.Config['search'] = {
 
 const nav: DefaultTheme.NavItem[] = [
   { activeMatch: '^/guide/', link: '/guide/introduction/a4v', text: '指南' },
+  { activeMatch: '^/components/', link: '/components/form', text: '组件' },
   { link: 'https://github.com/Mikasa33/a4v', text: '演示' },
 ]
 
@@ -92,10 +97,87 @@ const sidebarGuide: DefaultTheme.SidebarItem[] = [
   },
 ]
 
+const sidebarComponents: DefaultTheme.SidebarItem[] = [
+  {
+    text: '数据录入',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '表单 Form', link: '/form/' },
+      { text: '搜索关键词 Search Keyword', link: '/search-keyword/' },
+      { text: '选择器 Select', link: '/select/' },
+    ],
+  },
+  {
+    text: '数据展示',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '表格 Table', link: '/table/' },
+      { text: '树 Tree', link: '/tree/' },
+      { text: '展示标签 View Tag', link: '/view-tag/' },
+      { text: '展示时间 View Time', link: '/view-time/' },
+    ],
+  },
+  {
+    text: '反馈',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '抽屉 Drawer', link: '/drawer/' },
+      { text: '模态框 Modal', link: '/modal/' },
+      { text: '弹出信息 Popover', link: '/popover/' },
+    ],
+  },
+  {
+    text: '布局',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '弹性布局 Flex', link: '/flex/' },
+    ],
+  },
+  {
+    text: '配置',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '全局化配置 Config Provider', link: '/config-provider/' },
+    ],
+  },
+  {
+    text: '高级',
+    collapsed: false,
+    base: '/components',
+    items: [
+      { text: '高级表单 Adv Form', link: '/adv-form/' },
+      { text: '高级表格 Adv Table', link: '/adv-table/' },
+      { text: '高级树 Adv Tree', link: '/adv-tree/' },
+    ],
+  },
+]
+
 // https://vitepress.dev
 export default defineConfig({
   description: 'admin for vue',
   head,
+  markdown: {
+    theme: {
+      dark: 'vitesse-dark',
+      light: 'vitesse-light',
+    },
+  },
+  postRender(context) {
+    const styleRegex = /<css-render-style>(([\s\S])+)<\/css-render-style>/
+    const vitepressPathRegex = /<vitepress-path>(.+)<\/vitepress-path>/
+    const style = styleRegex.exec(context.content)?.[1]
+    const vitepressPath = vitepressPathRegex.exec(context.content)?.[1]
+    if (vitepressPath && style) {
+      fileAndStyles[vitepressPath] = style
+    }
+    context.content = context.content.replace(styleRegex, '')
+    context.content = context.content.replace(vitepressPathRegex, '')
+  },
   srcDir: 'src',
   title: 'a4v',
   themeConfig: {
@@ -132,6 +214,7 @@ export default defineConfig({
     search,
     sidebar: {
       '/guide/': { base: '/guide/', items: sidebarGuide },
+      '/components/': { base: '/components/', items: sidebarComponents },
     },
     sidebarMenuLabel: '菜单',
     siteTitle: 'a4v',
@@ -139,11 +222,36 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/Mikasa33/a4v' },
     ],
   },
+  transformHtml(code, id) {
+    const html = id.split('/').pop()
+    if (!html)
+      return
+    const style = fileAndStyles[`/${html}`]
+    if (style) {
+      return code.replace(/<\/head>/, `${style}</head>`)
+    }
+  },
   vite: {
+    css: {
+      postcss: {
+        plugins: [
+          postcssIsolateStyles({
+            includeFiles: [/vp-doc\.css/],
+          }),
+        ],
+      },
+    },
+    plugins: [
+      VueJsx(),
+      UnoCSS(),
+    ],
     server: {
       host: true,
       open: true,
       port: 7778,
+    },
+    ssr: {
+      noExternal: ['naive-ui', 'date-fns', 'vueuc'],
     },
   },
 })

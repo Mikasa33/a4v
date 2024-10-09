@@ -1,5 +1,5 @@
-import { truthProp } from '@a4v/utils'
 import { cardProps } from 'naive-ui'
+import { truthProp } from '../utils'
 
 export const innerPopupCardProps = {
   autoFocus: Boolean,

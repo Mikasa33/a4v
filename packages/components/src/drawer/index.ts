@@ -1,4 +1,4 @@
-import { withInstall } from '@a4v/utils'
+import { withInstall } from '../utils'
 import _Drawer from './Drawer.vue'
 
 export const ADrawer = withInstall(_Drawer)

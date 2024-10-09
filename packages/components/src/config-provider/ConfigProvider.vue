@@ -1,7 +1,6 @@
 <script setup lang="tsx">
 import type { ConfigProviderProps } from 'naive-ui'
 import type { ConfigProviderSlots } from './types'
-import { pickProps } from '@a4v/utils'
 import {
   dateZhCN,
   NConfigProvider,
@@ -20,6 +19,7 @@ import {
   zhCN,
 } from 'naive-ui'
 import { computed, defineComponent, h } from 'vue'
+import { pickProps } from '../utils'
 import { configProviderProps } from './props'
 
 const props = defineProps(configProviderProps)

@@ -2,11 +2,11 @@
 import type { CardProps } from 'naive-ui'
 import type { Slots } from 'vue'
 import type { PopupCardSlots } from './types'
-import { pickProps } from '@a4v/utils'
 import { useFullscreen } from '@vueuse/core'
 import { omit } from 'lodash-es'
 import { NButton, NCard, cardProps as nCardProps, NFlex, NScrollbar } from 'naive-ui'
 import { ref } from 'vue'
+import { pickProps } from '../utils'
 import { popupCardProps } from './props'
 
 const props = defineProps(popupCardProps)

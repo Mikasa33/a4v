@@ -1,4 +1,4 @@
-import { withInstall } from '@a4v/utils'
+import { withInstall } from '../utils'
 import _ConfigProvider from './ConfigProvider.vue'
 
 export const AConfigProvider = withInstall(_ConfigProvider)

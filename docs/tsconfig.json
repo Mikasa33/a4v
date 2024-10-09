@@ -1,12 +1,14 @@
 {
   "extends": "@a4v/tsconfig/web.json",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": [
+      "vite/client",
+      "naive-ui/volar"
+    ]
   },
   "include": [
-    ".vitepress/**/*.ts",
-    ".vitepress/**/*.vue",
-    "src/**/*.ts",
-    "src/**/*.vue"
+    ".vitepress/*",
+    "src/*"
   ]
 }

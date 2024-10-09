@@ -7,6 +7,11 @@
       "types": "./src/index.ts",
       "import": "./src/index.ts",
       "require": "./dist/index.cjs"
+    },
+    "./resolver": {
+      "types": "./src/resolver.ts",
+      "import": "./src/resolver.ts",
+      "require": "./dist/resolver.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -18,12 +23,15 @@
   "dependencies": {
     "@a4v/utils": "workspace:*",
     "@vueuse/core": "^11.1.0",
+    "dayjs": "^1.11.13",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.40.1",
     "vue": "^3.5.11"
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
-    "@types/lodash-es": "^4.17.12"
+    "@iconify-json/icon-park-outline": "^1.2.0",
+    "@types/lodash-es": "^4.17.12",
+    "unplugin-vue-components": "^0.27.4"
   }
 }

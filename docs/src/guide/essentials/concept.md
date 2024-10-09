@@ -39,7 +39,7 @@
 在代码中引入包：
 
 ```ts
-import { isString } from '@a4v/utils'
+import { renderIcon } from '@a4v/utils'
 ```
 
 ## 别名
