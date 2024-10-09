@@ -16,12 +16,12 @@
     "dist"
   ],
   "scripts": {
-    "stub": "pnpm unbuild --stub",
+    "stub": "pnpm unbuild",
     "postinstall": "pnpm stub"
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.0.0-rc.11",
     "unocss": "^0.62.4"
   }
 }

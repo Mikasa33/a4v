@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "stub": "pnpm unbuild --stub",
+    "stub": "pnpm unbuild",
     "postinstall": "pnpm stub"
   },
   "devDependencies": {
@@ -33,6 +33,6 @@
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^5.0.2",
     "stylelint-scss": "^6.7.0",
-    "unbuild": "^2.0.0"
+    "unbuild": "^3.0.0-rc.11"
   }
 }
