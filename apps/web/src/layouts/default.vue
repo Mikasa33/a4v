@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ALayout } from '@a4v/components'
 import { usePreference } from '@a4v/preference'
-import { Header, Sidebar } from './components'
+import { Header, PreferenceFloat, Sidebar } from './components'
 
 const { info, isDark } = usePreference()
 </script>
@@ -33,11 +33,13 @@ const { info, isDark } = usePreference()
 
     <NEl class="wh-full flex flex-col overflow-hidden bg-[var(--hover-color)] dark:bg-[var(--body-color)]">
       <RouterView #="{ Component, route }">
-        <Transition appear mode="out-in" :transition-name="info.page.animate ? info.page.animateMode : undefined">
-          <Component :is="Component" :key="route.path" />
+        <Transition appear mode="out-in" :name="info.page.animate ? info.page.animateMode : undefined">
+          <Component :is="Component" :key="route.path" class="wh-full flex" />
         </Transition>
       </RouterView>
     </NEl>
+
+    <PreferenceFloat v-if="!info.header.show" />
 
     <template #footer>
       <div class="wh-full flex-center">

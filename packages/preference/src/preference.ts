@@ -2,7 +2,7 @@ import type { DeepPartial } from '@a4v/types'
 import type { PreferenceInfo, ThemeColorPreferenceInfo } from './types'
 import { useColorMode, useDark, useStorage } from '@vueuse/core'
 import { cloneDeep, kebabCase, merge } from 'lodash-es'
-import { type App, computed, type ComputedRef, type MaybeRefOrGetter, ref, type Ref, type WritableComputedRef } from 'vue'
+import { type App, computed, type ComputedRef, type MaybeRefOrGetter, nextTick, ref, type Ref, type WritableComputedRef } from 'vue'
 import { defaultPreference } from './constants'
 import { preferenceInjectionKey } from './context'
 import { usePreferenceStore } from './useApi'
@@ -89,10 +89,12 @@ export function createPreference(options: PreferenceOption = {}) {
   }
   function update(value: DeepPartial<PreferenceInfo>) {
     storage.value = merge(storage.value, value)
-    setCSSVariables()
     if (value.colorMode) {
       setColorMode()
     }
+    nextTick(() => {
+      setCSSVariables()
+    })
   }
 
   const preference: Preference = {
@@ -106,8 +108,10 @@ export function createPreference(options: PreferenceOption = {}) {
     },
   }
 
-  setCSSVariables()
   setColorMode()
+  nextTick(() => {
+    setCSSVariables()
+  })
 
   return preference
 }

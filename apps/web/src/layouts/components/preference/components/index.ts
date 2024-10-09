@@ -1,4 +1,5 @@
 export { default as ColorMode } from './ColorMode.vue'
+export { default as Drawer } from './Drawer.vue'
 export { default as Footer } from './Footer.vue'
 export { default as Header } from './Header.vue'
 export { default as LayoutMode } from './LayoutMode.vue'
