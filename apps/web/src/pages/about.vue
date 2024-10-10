@@ -3,7 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div class="m-16px">
+  <div class="p-16px">
     <NCard :bordered="false">
       <NButton>
         {{ t('about') }}
