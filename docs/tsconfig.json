@@ -1,7 +1,6 @@
 {
   "extends": "@a4v/tsconfig/web.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "types": [
       "vite/client",
       "naive-ui/volar"
