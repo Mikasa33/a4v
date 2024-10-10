@@ -4,6 +4,16 @@ import { usePreference } from '@a4v/preference'
 import { Header, PreferenceFloat, Sidebar } from './components'
 
 const { info, isDark } = usePreference()
+
+const contentClass = computed(() => {
+  const { layoutMode, sidebar, header, footer } = info.value
+  if (layoutMode === 'horizontal' || !sidebar.show || (!isDark.value && sidebar.inverted)) {
+    return null
+  }
+  const headerClass = header.show && (isDark.value || !header.inverted) ? 'rounded-tl-12px' : null
+  const footerClass = footer.show && (isDark.value || !footer.inverted) ? 'rounded-bl-12px' : null
+  return `${headerClass} ${footerClass}`
+})
 </script>
 
 <template>
@@ -20,7 +30,7 @@ const { info, isDark } = usePreference()
     :footer-class="{ 'bg-#001427 text-#ffffffd1': !isDark && info.footer.inverted }"
     :header-class="{ 'bg-#001427 text-#ffffffd1': !isDark && info.header.inverted }"
     :sidebar-class="{ 'bg-#001427 text-#ffffffd1': !isDark && info.sidebar.inverted }"
-    :content-class="info.layoutMode !== 'horizontal' ? 'rounded-tl-12px rounded-bl-12px' : null"
+    :content-class="contentClass"
     class="!h-100vh dark:bg-#18181c"
   >
     <template #sidebar>

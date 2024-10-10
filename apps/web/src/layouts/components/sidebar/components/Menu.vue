@@ -20,7 +20,7 @@ const options = computed(() => processMenu(menus))
 //   },
 // )
 
-const { info } = usePreference()
+const { info, isDark } = usePreference()
 
 function handleSelect(key: string, option: any) {
   if (option.url) {
@@ -53,7 +53,7 @@ function processMenu(nodes: any[]) {
       :collapsed-icon-size="20"
       :icon-size="18"
       :indent="23"
-      :inverted="info.sidebar.inverted"
+      :inverted="!isDark && info.sidebar.inverted"
       @update:value="handleSelect"
     />
   </NScrollbar>

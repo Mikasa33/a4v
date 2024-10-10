@@ -14,7 +14,7 @@ const inverted = useVModel4Path(info, 'sidebar.inverted', update)
   <NDivider class="!my-20px">
     侧边栏
   </NDivider>
-  <NFormItem label="显示顶栏">
+  <NFormItem label="显示侧边栏">
     <NSwitch v-model:value="show" />
   </NFormItem>
   <NFormItem label="侧边栏宽度">

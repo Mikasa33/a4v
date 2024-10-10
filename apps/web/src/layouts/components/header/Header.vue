@@ -14,7 +14,7 @@ const { info } = usePreference()
       <NFlex
         align="center"
         :wrap="false"
-        :class="info.layoutMode === 'vertical' && (info.sidebar.inverted ? 'ml-16px' : 'ml-0')"
+        :class="info.layoutMode === 'vertical' && ((info.sidebar.inverted || info.header.inverted) ? 'ml-16px' : 'ml-0')"
         class="transition-300 transition-property-margin"
       >
         <Collapse v-if="info.layoutMode !== 'horizontal'" />

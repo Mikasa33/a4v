@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { usePreference } from '@a4v/preference'
 import { renderIcon } from '@a4v/utils'
+import { darkTheme } from 'naive-ui'
 
 const dialog = useDialog()
 // const { logout } = useAuthStore()
 
 const { info, isDark } = usePreference()
 // const { userInfo } = storeToRefs(useAuthStore())
+
+const theme = computed<any>(() => info.value.header.inverted ? darkTheme : {})
 
 const options = [
   {
@@ -49,6 +52,7 @@ function handleSelect(key: string) {
     @select="handleSelect"
   >
     <NEl
+      :theme
       :class="{ 'hover:bg-[var(--hover-color)] active:bg-[var(--hover-color)]': !isDark && info.header.inverted }"
       class="h-42px max-w-150px flex-center cursor-pointer rounded-full bg-[var(--button-color-2)] px-8px transition-300 active:bg-[var(--button-color-2-pressed)] dark:(bg-[var(--button-color-2)] active:bg-[var(--button-color-2)] hover:bg-[var(--button-color-2-hover)]) hover:bg-[var(--button-color-2-hover)]"
     >
