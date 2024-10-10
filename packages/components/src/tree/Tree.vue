@@ -6,6 +6,7 @@ import { NEmpty, NFlex, NSpin, NTree, treeProps as nTreeProps } from 'naive-ui'
 import { useRequest } from '../composables/useRequest'
 import { useSlotsFilter } from '../composables/useSlotsFilter'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { treeProps } from './props'
 
 const props = defineProps(treeProps)
@@ -72,15 +73,17 @@ function renderSuffix(node: { option: TreeOption, checked: boolean, selected: bo
   return node.option.suffix
 }
 
+cssr.mount()
+
 defineExpose({
   reload: execute,
 })
 </script>
 
 <template>
-  <div class="wh-full flex flex-col">
+  <div class="a-tree">
     <!-- 头部插槽 -->
-    <NFlex v-if="slots.header" align="center" class="mb-8px">
+    <NFlex v-if="slots.header" align="center" class="a-tree__header">
       <slot name="header" />
     </NFlex>
     <NSpin :show="loading" size="small">
@@ -93,11 +96,12 @@ defineExpose({
         :render-label="renderLabel"
         :render-prefix="renderPrefix"
         :render-suffix="renderSuffix"
-        :class="{ 'opacity-50 pointer-events-none': loading }"
+        :class="{ 'a-tree__tree--loading': loading }"
+        class="a-tree__tree"
       >
         <!-- 树组件无数据时的插槽 -->
         <template #empty>
-          <div :class="{ 'opacity-0': loading }">
+          <div :class="{ 'a-tree__empty--loading': loading }" class="a-tree__empty">
             <slot v-if="slots.empty" name="empty" />
             <NEmpty v-else />
           </div>

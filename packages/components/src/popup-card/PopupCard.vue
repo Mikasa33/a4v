@@ -2,11 +2,13 @@
 import type { CardProps } from 'naive-ui'
 import type { Slots } from 'vue'
 import type { PopupCardSlots } from './types'
+import { Icon } from '@iconify/vue'
 import { useFullscreen } from '@vueuse/core'
 import { omit } from 'lodash-es'
 import { NButton, NCard, cardProps as nCardProps, NFlex, NScrollbar } from 'naive-ui'
 import { ref } from 'vue'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { popupCardProps } from './props'
 
 const props = defineProps(popupCardProps)
@@ -30,34 +32,37 @@ function handleConfirm() {
 
 function IconBtn(_: any, { slots }: { slots: Slots }) {
   return (
-    <NButton quaternary size="small" class="!h-24px !w-24px !p-0">
+    <NButton quaternary size="small" class="a-popup-card-header__button">
       {slots.default?.()}
     </NButton>
   )
 }
+
+cssr.mount()
 </script>
 
 <template>
   <NCard
     ref="cardRef"
     v-bind="cardProps"
-    :content-class="`overflow-hidden !p-0 ${cardProps?.contentClass ?? ''} ${showFooter && 'mb-20px'}`"
-    :class="{ '!rounded-none': isFullscreen }"
-    class="h-full"
+    :content-class="`a-popup-card__content ${cardProps?.contentClass ?? ''} ${showFooter && 'a-popup-card__content--footer'}`"
+    :class="{ 'a-popup-card--fullscreen': isFullscreen }"
+    class="a-popup-card"
   >
     <template #header-extra>
       <slot name="header-extra" />
-      <NFlex align="center" justify="end" size="small">
+      <NFlex align="center" justify="end" size="small" class="a-popup-card-header">
         <IconBtn v-if="fullscreenable" @click="toggleFullscreen">
-          <div :class="isFullscreen ? 'i-icon-park-outline-off-screen' : 'i-icon-park-outline-full-screen'" class="text-16px" />
+          <div class="a-popup-card-header__icon" />
+          <Icon :icon="isFullscreen ? 'icon-park-outline:off-screen' : 'icon-park-outline:full-screen'" class="a-popup-card-header__icon" />
         </IconBtn>
         <IconBtn v-if="closable" @click="handleCancel">
-          <div class="i-icon-park-outline-close text-16px" />
+          <Icon icon="icon-park-outline:close" class="a-popup-card-header__icon" />
         </IconBtn>
       </NFlex>
     </template>
 
-    <NScrollbar :content-class="`px-24px ${!showFooter && 'pb-20px'}`">
+    <NScrollbar :content-class="`a-popup-card__scrollbar ${!showFooter && 'a-popup-card__scrollbar--footer'}`">
       <slot />
     </NScrollbar>
 

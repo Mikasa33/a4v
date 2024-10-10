@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { cssr } from './cssr'
+
+cssr.mount()
+</script>
+
 <template>
-  <div class="flex-1" />
+  <div class="a-flex-1" />
 </template>

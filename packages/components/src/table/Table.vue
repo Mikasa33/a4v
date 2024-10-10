@@ -8,6 +8,7 @@ import { useRequest } from '../composables/useRequest'
 import { useSlotsFilter } from '../composables/useSlotsFilter'
 import { pickProps } from '../utils'
 import { components } from './components'
+import { cssr } from './cssr'
 import { tableProps } from './props'
 
 const props = defineProps(tableProps)
@@ -126,13 +127,11 @@ function rowKey(row: any) {
 
 function renderComponent(column: TableColumnProps, row: any) {
   const { key, component, componentProps } = column
-  return h(
-    isString(component) ? components[component] : component!,
-    {
-      ...componentProps,
-      value: row[key!],
-    },
-  )
+  const comp = isString(component) ? components[component] : component
+  if (!comp) {
+    return null
+  }
+  return h(comp, { ...componentProps, value: row[key!] })
 }
 
 function reload(params?: Record<string, any>) {
@@ -150,6 +149,8 @@ function getPagination(): boolean | PaginationProps {
   return pagination.value
 }
 
+cssr.mount()
+
 defineExpose({
   getCheckedRowKeys,
   getLoading,
@@ -160,9 +161,9 @@ defineExpose({
 </script>
 
 <template>
-  <div class="wh-full flex flex-col">
+  <div class="a-table">
     <!-- 头部插槽 -->
-    <NFlex v-if="slots.header" align="center" class="mb-12px">
+    <NFlex v-if="slots.header" align="center" class="a-table__header">
       <slot name="header" />
     </NFlex>
     <NDataTable
@@ -175,7 +176,7 @@ defineExpose({
       :pagination
       remote
       :row-key="rowKey"
-      class="flex-1"
+      class="a-table__table"
     />
   </div>
 </template>

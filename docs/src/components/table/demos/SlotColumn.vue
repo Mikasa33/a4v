@@ -37,10 +37,7 @@ const tableProps = reactive<TableProps>({
 </script>
 
 <template>
-  <ATable
-    v-bind="tableProps"
-    class="h-230px"
-  >
+  <ATable v-bind="tableProps" class="!h-230px">
     <!-- 插槽优先级 slot > key -->
     <template #column-age="{ row }">
       age {{ row.age }}

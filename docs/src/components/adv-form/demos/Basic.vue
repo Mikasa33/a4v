@@ -6,7 +6,7 @@ import { nextTick, ref } from 'vue'
 
 const show = ref(false)
 const value = ref({})
-const preset = ref<AdvFormPopupPresetType>(undefined)
+const preset = ref<AdvFormPopupPresetType>()
 const formOptions = ['groode', 'veli good', 'emazing', 'lidiculous'].map(
   v => ({
     label: v,
@@ -19,13 +19,13 @@ const advFormProps: AdvFormProps = {
     {
       path: 'iAut',
       label: '输入框',
-      component: 'NIAut',
+      component: 'NInput',
       defaultValue: '输入框默认值',
     },
     {
       path: 'textarea',
       label: '多行文本框',
-      component: 'NIAut',
+      component: 'NInput',
       componentProps: {
         type: 'textarea',
       },

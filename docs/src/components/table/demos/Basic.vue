@@ -35,9 +35,5 @@ const tableProps = reactive<TableProps>({
       刷新
     </NButton>
   </div>
-  <ATable
-    ref="tableRef"
-    v-bind="tableProps"
-    class="h-230px"
-  />
+  <ATable ref="tableRef" v-bind="tableProps" class="!h-230px" />
 </template>

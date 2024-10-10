@@ -1,5 +1,6 @@
 <script setup lang="tsx">
 import type { AdvTableInstance, AdvTableSlots } from './types'
+import { Icon } from '@iconify/vue'
 import { isNil, isString } from 'lodash-es'
 import { NButton, NEl, NFlex, NTooltip } from 'naive-ui'
 import { computed, ref } from 'vue'
@@ -13,6 +14,7 @@ import { APopover } from '../popover'
 import { ASearchKeyword } from '../search-keyword'
 import { ATable, tableProps as ATableProps } from '../table'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { advTableProps } from './props'
 
 const props = defineProps(advTableProps)
@@ -108,10 +110,10 @@ function Btn({ icon, onClick, ...props }: { icon: string, onClick: () => void })
   return (
     <NButton
       {...props}
-      class="!h-34px !w-34px !p-0"
+      class="a-adv-table__button"
       onClick={onClick}
     >
-      <div class={icon} />
+      <Icon icon={icon} />
     </NButton>
   )
 }
@@ -165,6 +167,8 @@ function PopupCardBtns() {
   )
 }
 
+cssr.mount()
+
 defineExpose<AdvTableInstance>({
   ...tableRef.value,
 })
@@ -173,8 +177,8 @@ defineExpose<AdvTableInstance>({
 <template>
   <NEl
     ref="wrapRef"
-    class="z-1000 wh-full flex flex-1"
-    :class="{ 'px-24px py-20px': isFullscreen }"
+    class="a-adv-table"
+    :class="{ 'a-adv-table--fullscreen': isFullscreen }"
     :style="{ backgroundColor: 'var(--card-color)' }"
   >
     <ATable
@@ -184,7 +188,7 @@ defineExpose<AdvTableInstance>({
       :columns
       flex-height
       :on-request
-      class="flex-1"
+      class="a-adv-table__table"
     >
       <template v-if="(searchable || filterable || refreshable || fullscreenable || slots.action || slots.search)" #header>
         <NFlex align="center" :wrap="false">
@@ -209,7 +213,7 @@ defineExpose<AdvTableInstance>({
             <NTooltip>
               <template #trigger>
                 <div>
-                  <FilterBtn icon="i-icon-park-outline-filter" @click="handleClickFilterBtn" />
+                  <FilterBtn icon="icon-park-outline:filter" @click="handleClickFilterBtn" />
                 </div>
               </template>
               筛选
@@ -233,7 +237,7 @@ defineExpose<AdvTableInstance>({
           <template v-if="refreshable">
             <NTooltip>
               <template #trigger>
-                <Btn icon="i-icon-park-outline-refresh" @click="() => tableRef.refresh()" />
+                <Btn icon="icon-park-outline:refresh" @click="() => tableRef.refresh()" />
               </template>
               刷新
             </NTooltip>
@@ -242,7 +246,7 @@ defineExpose<AdvTableInstance>({
           <template v-if="fullscreenable">
             <NTooltip>
               <template #trigger>
-                <Btn :icon="isFullscreen ? 'i-icon-park-outline-off-screen' : 'i-icon-park-outline-full-screen'" @click="toggleFullscreen" />
+                <Btn :icon="isFullscreen ? 'icon-park-outline:off-screen' : 'icon-park-outline:full-screen'" @click="toggleFullscreen" />
               </template>
               {{ isFullscreen ? '还原' : '全屏' }}
             </NTooltip>

@@ -31,11 +31,7 @@ const keyword = ref('')
 </script>
 
 <template>
-  <ATable
-    ref="tableRef"
-    v-bind="tableProps"
-    class="h-230px"
-  >
+  <ATable ref="tableRef" v-bind="tableProps" class="!h-230px">
     <template #header>
       <NButton type="primary">
         新增
@@ -43,11 +39,7 @@ const keyword = ref('')
       <AFlex1 />
       <div>
         <NInputGroup>
-          <NInput
-            v-model:value="keyword"
-            placeholder="请输入搜索关键词"
-            clearable
-          />
+          <NInput v-model:value="keyword" placeholder="请输入搜索关键词" clearable />
           <NButton @click="tableRef?.reload({ keyword })">
             搜索
           </NButton>

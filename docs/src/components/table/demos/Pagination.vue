@@ -43,8 +43,5 @@ const tableProps = reactive<TableProps>({
 </script>
 
 <template>
-  <ATable
-    v-bind="tableProps"
-    class="h-230px"
-  />
+  <ATable v-bind="tableProps" class="!h-230px" />
 </template>

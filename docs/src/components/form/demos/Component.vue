@@ -39,9 +39,6 @@ const formProps: FormProps = {
 </script>
 
 <template>
-  <AForm
-    v-bind="formProps"
-    v-model:value="formValue"
-  />
+  <AForm v-bind="formProps" v-model:value="formValue" />
   <pre>{{ formValue }}</pre>
 </template>

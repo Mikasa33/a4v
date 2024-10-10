@@ -17,10 +17,6 @@ const searchProps: SearchKeywordProps = {
 </script>
 
 <template>
-  <ASearchKeyword
-    v-bind="searchProps"
-    v-model:value="params.value"
-    v-model:field="params.field"
-  />
+  <ASearchKeyword v-bind="searchProps" v-model:value="params.value" v-model:field="params.field" />
   <pre>{{ params }}</pre>
 </template>

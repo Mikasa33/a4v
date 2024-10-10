@@ -31,9 +31,6 @@ const selectProps: SelectProps = {
 </script>
 
 <template>
-  <ASelect
-    v-model:value="value"
-    v-bind="selectProps"
-  />
+  <ASelect v-model:value="value" v-bind="selectProps" />
   <pre>已选值：{{ value }}</pre>
 </template>

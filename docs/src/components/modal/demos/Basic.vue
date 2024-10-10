@@ -14,10 +14,7 @@ const modalProps: ModalProps = {
   <NButton @click="show = true">
     打开模态窗
   </NButton>
-  <AModal
-    v-bind="modalProps"
-    v-model:show="show"
-  >
+  <AModal v-bind="modalProps" v-model:show="show">
     123
   </AModal>
 </template>

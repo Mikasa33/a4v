@@ -30,10 +30,6 @@ const tableProps = reactive<TableProps>({
 </script>
 
 <template>
-  <ATable
-    v-bind="tableProps"
-    v-model:checked-row-keys="checkedRowKeys"
-    class="h-230px"
-  />
+  <ATable v-bind="tableProps" v-model:checked-row-keys="checkedRowKeys" class="!h-230px" />
   <pre>{{ checkedRowKeys }}</pre>
 </template>

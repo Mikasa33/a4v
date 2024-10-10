@@ -43,10 +43,7 @@ const advTableProps: AdvTableProps = {
 
 <template>
   <div class="h-300px">
-    <AAdvTable
-      ref="advTableRef"
-      v-bind="advTableProps"
-    >
+    <AAdvTable ref="advTableRef" v-bind="advTableProps">
       <!-- 优先级最高 -->
       <template #column-action="{ row, index }">
         {{ index === 0 ? row : '...' }}

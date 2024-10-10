@@ -14,10 +14,7 @@ const drawerProps: DrawerProps = {
   <NButton @click="show = true">
     打开抽屉
   </NButton>
-  <ADrawer
-    v-bind="drawerProps"
-    v-model:show="show"
-  >
+  <ADrawer v-bind="drawerProps" v-model:show="show">
     123
   </ADrawer>
 </template>

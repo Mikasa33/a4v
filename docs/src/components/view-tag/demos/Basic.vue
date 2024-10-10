@@ -11,12 +11,7 @@ const options = [
 
 <template>
   <NFlex>
-    <AViewTag
-      :value
-      :options
-      round
-      type="success"
-    />
+    <AViewTag :value :options round type="success" />
     <AViewTag :value />
   </NFlex>
 </template>

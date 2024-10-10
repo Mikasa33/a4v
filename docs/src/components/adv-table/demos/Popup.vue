@@ -16,7 +16,7 @@ const advTableProps: AdvTableProps = reactive({
       {
         path: 'age',
         label: '年龄',
-        component: 'NIAutNumber',
+        component: 'NInputNumber',
         componentProps: {
           class: 'w-full',
         },
@@ -24,7 +24,7 @@ const advTableProps: AdvTableProps = reactive({
       {
         path: 'address',
         label: '地址',
-        component: 'NIAut',
+        component: 'NInput',
       },
     ],
   },
@@ -67,11 +67,7 @@ const advTableProps: AdvTableProps = reactive({
 
 <template>
   <div class="h-300px">
-    <AAdvTable
-      ref="advTableRef"
-      v-bind="advTableProps"
-      :filter-preset="preset"
-    >
+    <AAdvTable ref="advTableRef" v-bind="advTableProps" :filter-preset="preset">
       <template #action>
         <NRadioGroup v-model:value="preset">
           <NRadio value="drawer">

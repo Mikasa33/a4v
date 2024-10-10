@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { InputProps } from 'naive-ui'
 import type { SearchKeywordSlots } from './types'
+import { Icon } from '@iconify/vue'
 import { watchDebounced } from '@vueuse/core'
 import { NInput, NInputGroup, inputProps as nInputProps, NSelect } from 'naive-ui'
 import { computed, watch } from 'vue'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { searchKeywordProps } from './props'
 
 const props = defineProps(searchKeywordProps)
@@ -40,27 +42,29 @@ watchDebounced(
     debounce: props.debounce,
   },
 )
+
+cssr.mount()
 </script>
 
 <template>
-  <NInputGroup class="w-auto">
+  <NInputGroup class="a-search-keyword">
     <NSelect
       v-if="selectField"
       v-model:value="field"
       :options="fieldOptions"
       :class="fieldClass"
       :consistent-menu-width="false"
-      class="w-auto"
+      class="a-search-keyword__select"
     />
     <NInput
       v-bind="inputProps"
       v-model:value="value"
-      class="flex-1"
       :class="inputClass"
+      class="a-search-keyword__input"
     >
       <template #prefix>
         <slot v-if="$slots['input-prefix']" name="input-prefix" />
-        <div v-else-if="!selectField" class="i-icon-park-outline-search mr-4px" />
+        <Icon v-else-if="!selectField" icon="icon-park-outline:search" class="a-search-keyword__icon" />
       </template>
     </NInput>
   </NInputGroup>

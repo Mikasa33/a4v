@@ -36,10 +36,7 @@ const advTableProps: AdvTableProps = {
 
 <template>
   <div class="h-300px">
-    <AAdvTable
-      ref="advTableRef"
-      v-bind="advTableProps"
-    >
+    <AAdvTable ref="advTableRef" v-bind="advTableProps">
       <template #action>
         action slot
       </template>

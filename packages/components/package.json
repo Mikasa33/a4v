@@ -4,22 +4,28 @@
   "version": "0.0.0",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./dist/index.cjs"
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.cjs"
     },
     "./resolver": {
-      "types": "./src/resolver.ts",
-      "import": "./src/resolver.ts",
-      "require": "./dist/resolver.cjs"
+      "types": "./es/resolver.d.ts",
+      "import": "./es/resolver.mjs",
+      "require": "./lib/resolver.cjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.cjs",
+  "module": "./es/index.mjs",
+  "types": "./es/index.d.ts",
   "files": [
-    "dist"
+    "es",
+    "lib"
   ],
+  "scripts": {
+    "build": "vue-tsc -b && rimraf *.tsbuildinfo && vite build",
+    "dev": "pnpm build --watch",
+    "stub": "pnpm build"
+  },
   "dependencies": {
     "@a4v/utils": "workspace:*",
     "@vueuse/core": "^11.1.0",
@@ -30,8 +36,20 @@
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
+    "@css-render/plugin-bem": "^0.15.14",
     "@iconify-json/icon-park-outline": "^1.2.0",
+    "@iconify/vue": "^4.1.2",
     "@types/lodash-es": "^4.17.12",
-    "unplugin-vue-components": "^0.27.4"
+    "@types/node": "^22.5.5",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "css-render": "^0.15.14",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.2",
+    "unocss": "^0.62.4",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.3.6",
+    "vite-plugin-dts": "3.9.1",
+    "vue-tsc": "^2.1.6"
   }
 }

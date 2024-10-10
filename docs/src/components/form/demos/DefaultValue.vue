@@ -50,11 +50,7 @@ const formProps: FormProps = {
 </script>
 
 <template>
-  <AForm
-    ref="formRef"
-    v-bind="formProps"
-    v-model:value="formValue"
-  />
+  <AForm ref="formRef" v-bind="formProps" v-model:value="formValue" />
   <NFlex justify="end">
     <NButton @click="formRef.reset()">
       重置数据
@@ -62,10 +58,7 @@ const formProps: FormProps = {
     <NButton @click="formRef.restoreValidation()">
       清空验证
     </NButton>
-    <NButton
-      type="primary"
-      @click="formRef.validate()"
-    >
+    <NButton type="primary" @click="formRef.validate()">
       验证
     </NButton>
   </NFlex>

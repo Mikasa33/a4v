@@ -49,15 +49,9 @@ const formProps2: FormProps = reactive({
 </script>
 
 <template>
-  <AForm
-    v-model:value="formValue"
-    v-bind="formProps"
-  />
+  <AForm v-model:value="formValue" v-bind="formProps" />
   <AForm v-bind="formProps2">
-    <template
-      v-if="formValue.suffix"
-      #gi-suffix="{ overflow }"
-    >
+    <template v-if="formValue.suffix" #gi-suffix="{ overflow }">
       {{ overflow ? '存在溢出' : '不存在溢出' }}
     </template>
   </AForm>

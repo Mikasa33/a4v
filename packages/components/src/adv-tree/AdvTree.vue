@@ -1,6 +1,7 @@
 <script setup lang="tsx">
 import type { DropdownOption, TreeOption } from 'naive-ui'
 import type { AdvTreeSlots } from './types'
+import { Icon } from '@iconify/vue'
 import { isNil, isString } from 'lodash-es'
 import { NButton, NDropdown, NEl, NFlex, NText, NTooltip } from 'naive-ui'
 import { ref } from 'vue'
@@ -13,6 +14,7 @@ import { ASearchKeyword } from '../search-keyword'
 import { ATree } from '../tree'
 import { treeProps as ATreeProps } from '../tree/props'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { advTreeProps } from './props'
 
 const props = defineProps(advTreeProps)
@@ -72,7 +74,7 @@ function handleClickFilterBtn() {
 function handleRefresh() {
   treeRef.value.reload()
 }
-function handleSelectDropdown(key: string | number, option: DropdownOption, node: { option: TreeOption, checked: boolean, selected: boolean }) {
+function handleSelectDropdown(key: string | number, _: DropdownOption, node: { option: TreeOption, checked: boolean, selected: boolean }) {
   emits(key as any, node)
 }
 
@@ -92,14 +94,14 @@ function renderSuffix(node: { option: TreeOption, checked: boolean, selected: bo
       trigger="click"
       options={options}
       placement="bottom-end"
-      class="min-w-80px"
+      class="a-adv-tree__dropdown"
       onSelect={(key, option) => handleSelectDropdown(key, option, node)}
     >
       <div
-        class="h-[var(--n-node-content-height)] w-24px flex-center text-16px"
+        class="a-adv-tree__icon"
         onClick={e => e.stopPropagation()}
       >
-        <div class="i-icon-park-outline-more-one" />
+        <Icon icon="icon-park-outline:more-one" />
       </div>
     </NDropdown>
   )
@@ -108,10 +110,10 @@ function Btn({ icon, onClick, ...props }: { icon: string, onClick: () => void })
   return (
     <NButton
       {...props}
-      class="!h-34px !w-34px !p-0"
+      class="a-adv-tree__button"
       onClick={onClick}
     >
-      <div class={icon} />
+      <Icon icon={icon} />
     </NButton>
   )
 }
@@ -164,11 +166,13 @@ function PopupCardBtns() {
     </NFlex>
   )
 }
+
+cssr.mount()
 </script>
 
 <template>
   <NEl
-    class="wh-full flex flex-1 flex-col"
+    class="a-adv-tree"
     :style="{ backgroundColor: 'var(--card-color)' }"
   >
     <ATree
@@ -176,7 +180,7 @@ function PopupCardBtns() {
       v-bind="treeProps"
       :on-request
       :render-suffix
-      class="w-full [&_.n-tree-node-content]:pr-0"
+      class="a-adv-tree__tree"
     >
       <template #header>
         <slot name="action" />
@@ -187,7 +191,7 @@ function PopupCardBtns() {
           v-model:value="searchValue.keyword"
           v-model:field="searchValue.field"
           :disabled="loading"
-          class="flex-1"
+          class="a-adv-tree__search-keyword"
           @search="handleSearch"
         />
         <AFlex1 v-else />
@@ -196,7 +200,7 @@ function PopupCardBtns() {
           <NTooltip>
             <template #trigger>
               <div>
-                <FilterBtn icon="i-icon-park-outline-filter" @click="handleClickFilterBtn" />
+                <FilterBtn icon="icon-park-outline:filter" @click="handleClickFilterBtn" />
               </div>
             </template>
             筛选
@@ -220,7 +224,7 @@ function PopupCardBtns() {
         <template v-if="refreshable">
           <NTooltip>
             <template #trigger>
-              <Btn icon="i-icon-park-outline-refresh" @click="handleRefresh" />
+              <Btn icon="icon-park-outline:refresh" @click="handleRefresh" />
             </template>
             刷新
           </NTooltip>

@@ -3,6 +3,7 @@ import type { CSSProperties } from 'vue'
 import type { LayoutProps, LayoutSlots } from './types'
 import { addUnit } from '@a4v/utils'
 import { computed } from 'vue'
+import { cssr } from './cssr'
 
 const {
   sidebarCollapsedWidth = 64,
@@ -23,7 +24,7 @@ const headerHeightStr = computed(() => addUnit(headerHeight))
 const isHorizontal = computed(() => mode === 'horizontal')
 const sidebarWidthStr = computed(() => addUnit(sidebarWidth))
 const sidebarResultWithStr = computed(() => collapsed.value ? sidebarCollapsedWidthStr.value : sidebarWidthStr.value)
-const contentWrapperStyle = computed<CSSProperties>(() => {
+const contentContainerStyle = computed<CSSProperties>(() => {
   const reduceHeaderHeight = showHeader ? ` - ${headerHeightStr.value}` : ''
   const reduceFooterHeight = showFooter ? ` - ${footerHeightStr.value}` : ''
   return {
@@ -31,97 +32,64 @@ const contentWrapperStyle = computed<CSSProperties>(() => {
     height: `calc(100%${reduceHeaderHeight}${reduceFooterHeight})`,
   }
 })
-const footerWrapperStyle = computed<CSSProperties>(() => ({
+const footerContainerStyle = computed<CSSProperties>(() => ({
   paddingLeft: showSidebar ? sidebarResultWithStr.value : 0,
   height: footerHeightStr.value,
 }))
-const headerWrapperStyle = computed<CSSProperties>(() => ({
+const headerContainerStyle = computed<CSSProperties>(() => ({
   paddingLeft: isHorizontal.value ? 0 : showSidebar ? sidebarResultWithStr.value : 0,
   height: headerHeightStr.value,
 }))
-const sidebarWrapperStyle = computed<CSSProperties>(() => ({
+const sidebarContainerStyle = computed<CSSProperties>(() => ({
   paddingTop: isHorizontal.value ? showHeader ? headerHeightStr.value : 0 : 0,
   width: sidebarResultWithStr.value,
 }))
 const sidebarTransform = computed(() => `translateX(-${sidebarResultWithStr.value})`)
+
+const style = computed(() => ({
+  '--a-layout-sidebar-transform': sidebarTransform.value,
+}))
+
+cssr.mount()
 </script>
 
 <template>
-  <div class="y-layout relative h-full flex flex-col">
-    <Transition name="layout-sidebar-transition">
+  <div class="a-layout" :style>
+    <Transition name="a-layout-sidebar">
       <div
         v-if="showSidebar"
-        :class="mode.includes('vertical') ? 'z-9' : null"
-        class="absolute h-full transition-300 transition-property-width,padding"
-        :style="sidebarWrapperStyle"
+        :class="mode.includes('vertical') ? 'a-layout-sidebar--vertical' : null"
+        class="a-layout-sidebar-container"
+        :style="sidebarContainerStyle"
       >
-        <div
-          class="box-border h-full overflow-hidden"
-          :class="sidebarClass"
-          :style="sidebarStyle"
-        >
-          <slot
-            name="sidebar"
-            :collapsed="collapsed"
-          />
+        <div class="a-layout-sidebar" :class="sidebarClass" :style="sidebarStyle">
+          <slot name="sidebar" :collapsed="collapsed" />
         </div>
       </div>
     </Transition>
     <div
       v-if="showHeader"
-      :class="mode.includes('horizontal') ? 'z-9' : null"
-      class="h-full flex-grow transition-300 transition-property-padding"
-      :style="headerWrapperStyle"
+      :class="mode.includes('horizontal') ? 'a-layout-header--horizontal' : null"
+      class="a-layout-header-container"
+      :style="headerContainerStyle"
     >
-      <div
-        class="box-border h-full overflow-hidden"
-        :class="headerClass"
-        :style="headerStyle"
-      >
+      <div class="a-layout-header" :class="headerClass" :style="headerStyle">
         <slot name="header" />
       </div>
     </div>
-    <div
-      class="transition-300 transition-property-padding"
-      :style="contentWrapperStyle"
-    >
-      <div
-        class="box-border h-full overflow-hidden"
-        :class="contentClass"
-        :style="contentStyle"
-      >
+    <div class="a-layout-content-container" :style="contentContainerStyle">
+      <div class="a-layout-content" :class="contentClass" :style="contentStyle">
         <slot />
       </div>
     </div>
     <div
       v-if="showFooter"
-      class="h-full flex-shrink transition-300 transition-property-padding"
-      :style="footerWrapperStyle"
+      class="a-layout-footer-container"
+      :style="footerContainerStyle"
     >
-      <div
-        class="box-border h-full overflow-hidden"
-        :class="footerClass"
-        :style="footerStyle"
-      >
+      <div class="a-layout-footer" :class="footerClass" :style="footerStyle">
         <slot name="footer" />
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.layout-sidebar-transition-enter-active,
-.layout-sidebar-transition-leave-active {
-  transition: all 0.3s;
-}
-
-.layout-sidebar-transition-enter-from {
-  opacity: 0;
-  transform: v-bind('sidebarTransform');
-}
-
-.layout-sidebar-transition-leave-to {
-  opacity: 0;
-  transform: v-bind('sidebarTransform');
-}
-</style>

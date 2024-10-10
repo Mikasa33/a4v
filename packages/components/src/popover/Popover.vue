@@ -5,6 +5,7 @@ import { omit } from 'lodash-es'
 import { cardProps as nCardProps, NPopover, popoverProps as nPopoverProps } from 'naive-ui'
 import { APopupCard } from '../popup-card'
 import { pickProps } from '../utils'
+import { cssr } from './cssr'
 import { popoverProps } from './props'
 
 defineOptions({
@@ -28,10 +29,12 @@ function handleCancel() {
 function handleConfirm() {
   emits('confirm')
 }
+
+cssr.mount()
 </script>
 
 <template>
-  <NPopover v-bind="pickedPopoverProps" v-model:show="show" class="!p-0">
+  <NPopover v-bind="pickedPopoverProps" v-model:show="show" class="a-popover">
     <APopupCard v-bind="pickedCardProps" :fullscreenable="false" @cancel="handleCancel" @confirm="handleConfirm">
       <template v-if="slots['header-extra']" #header-extra>
         <slot name="header-extra" />
