@@ -16,8 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "stub": "pnpm unbuild --stub",
-    "postinstall": "pnpm stub"
+    "postinstall": "pnpm stub",
+    "stub": "pnpm unbuild --stub"
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",
