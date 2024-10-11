@@ -70,6 +70,8 @@ pnpm lint
 pnpm lint:fix
 ```
 
+## License
+
 <!-- automd:contributors author="Mikasa33" -->
 
 Made by [@Mikasa33](https://github.com/Mikasa33) and [community](https://github.com/Mikasa33/a4v/graphs/contributors) 💛
