@@ -1,0 +1,31 @@
+{
+  "name": "@a4v/vite-plugin-nitro-mock",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "postinstall": "pnpm stub",
+    "stub": "pnpm unbuild"
+  },
+  "devDependencies": {
+    "@a4v/tsconfig": "workspace:*",
+    "chalk": "^5.3.0",
+    "consola": "^3.2.3",
+    "get-port-please": "^3.1.2",
+    "nitropack": "^2.9.7",
+    "unbuild": "^3.0.0-rc.11",
+    "vite": "^5.4.8"
+  }
+}
