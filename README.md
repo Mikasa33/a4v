@@ -1,9 +1,7 @@
 <div align="center">
   <a href="https://github.com/Mikasa33/a4v">
-    <img alt="A4v Logo" width="215" src="./apps/web/public/logo.svg">
+    <img alt="A4v Logo" width="160" src="./apps/web/public/logo.svg">
   </a>
-  <br>
-  <br>
   <h1>a4v</h1>
 </div>
 
