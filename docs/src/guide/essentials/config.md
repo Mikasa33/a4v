@@ -41,12 +41,28 @@ VITE_APP_GITHUB = https://github.com/Mikasa33/a4v
 ```
 
 ```bash [.env.development]
-# 是否打开 Vue DevTools
+# 端口
+VITE_PORT = 7777
+
+# Nitro Mock 端口
+VITE_NITRO_MOCK_PORT = 7776
+
+# 接口地址
+VITE_GLOB_API_URL = /api
+
+# 是否开启全局 Loading
+VITE_APP_LOADING = true
+
+# 是否开启 Vue DevTools
 VITE_DEVTOOLS = true
+
+# 是否开启 Nitro Mock
+VITE_NITRO_MOCK = true
 ```
 
 ```bash [.env.production]
-
+# 接口地址
+VITE_GLOB_API_URL = https://xxx/api
 ```
 
 :::
@@ -59,7 +75,7 @@ VITE_DEVTOOLS = true
 
 ```ts
 window._A4V_APP_CONFIG_ = {
-  VITE_GLOB_API_URL: 'https://mock-napi.a4v.pro/api',
+  VITE_GLOB_API_URL: 'https://xxx/api',
 }
 Object.freeze(window._A4V_APP_CONFIG_)
 Object.defineProperty(window, '_A4V_APP_CONFIG_', {
@@ -87,7 +103,7 @@ const { apiURL } = useAppConfig(import.meta.env, import.meta.env.PROD)
 - 首先在 `.env` 或者对应的开发环境配置文件内，新增需要可动态配置的变量，需要以 `VITE_GLOB_*` 开头的变量，如：
 
   ```bash
-  VITE_GLOB_OTHER_API_URL=https://mock-napi.a4v.pro/other-api
+  VITE_GLOB_OTHER_API_URL = https://xxx/other-api
   ```
 
 - 在 `packages/types/global.d.ts`，新增对应的类型定义，如：

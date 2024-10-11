@@ -71,6 +71,10 @@ const sidebarGuide: DefaultTheme.SidebarItem[] = [
         link: 'essentials/config',
         text: '配置',
       },
+      {
+        link: 'essentials/server',
+        text: '服务端交互与数据 Mock',
+      },
     ],
   },
   {

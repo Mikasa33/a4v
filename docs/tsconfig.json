@@ -1,13 +1,15 @@
 {
   "extends": "@a4v/tsconfig/web.json",
   "compilerOptions": {
+    "jsx": "preserve",
     "types": [
       "vite/client",
       "naive-ui/volar"
     ]
   },
   "include": [
-    ".vitepress/*",
-    "src/*"
+    "**/*",
+    ".vitepress/**/*",
+    "src/**/*"
   ]
 }

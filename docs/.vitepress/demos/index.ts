@@ -13,7 +13,7 @@ for (const key in modules) {
 
 function registerComponents(app: App) {
   for (const key in components) {
-    app.component(key, components[key])
+    app.component(key, components[key]!)
   }
 }
 
