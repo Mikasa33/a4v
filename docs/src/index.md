@@ -7,7 +7,7 @@ hero:
   text: 简单的管理系统框架
   tagline: 开箱即用，提供舒适开发体验
   image:
-    src: /vite.svg
+    src: /logos/logo.svg
     alt: a4v
   actions:
     - theme: brand

@@ -8,9 +8,9 @@ const fileAndStyles: Record<string, string> = {}
 const head: HeadConfig[] = [
   ['meta', { content: 'Mikasa33', name: 'author' }],
   ['meta', { content: 'a4v, vue, vite, naive-ui' }],
-  ['link', { href: '/vite.svg', rel: 'icon', type: 'image/svg+xml' }],
+  ['link', { href: '/logos/logo.svg', rel: 'icon', type: 'image/svg+xml' }],
   ['meta', { content: 'a4v docs', name: 'keywords' }],
-  ['link', { href: '/vite.svg', rel: 'icon' }],
+  ['link', { href: '/logos/logo.svg', rel: 'icon' }],
 ]
 
 const search: DefaultTheme.Config['search'] = {
@@ -208,7 +208,7 @@ export default defineConfig({
       text: '最后更新于',
     },
     lightModeSwitchTitle: '切换到浅色模式',
-    logo: '/vite.svg',
+    logo: '/logos/logo.svg',
     nav,
     outline: {
       label: '页面导航',

@@ -1,3 +1,5 @@
+<div align="center"> <a href="https://github.com/Mikasa33/a4v"> <img alt="A4v Logo" width="215" src="./apps/web/public/logo.svg"> </a> <br> <br>
+
 # a4v
 
 <!-- automd:contributors author="Mikasa33" -->
