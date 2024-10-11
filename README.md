@@ -1,5 +1,19 @@
-# Vue 3 + TypeScript + Vite
+# a4v
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<!-- automd:contributors author="Mikasa33" -->
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Made by [@Mikasa33](https://github.com/Mikasa33) and [community](https://github.com/Mikasa33/a4v/graphs/contributors) 💛
+<br><br>
+<a href="https://github.com/Mikasa33/a4v/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=Mikasa33/a4v" />
+</a>
+
+<!-- /automd -->
+
+<!-- automd:with-automd -->
+
+---
+
+_🤖 auto updated with [automd](https://automd.unjs.io)_
+
+<!-- /automd -->

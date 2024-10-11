@@ -4,6 +4,13 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.12.1",
+  "author": "Mikasa33 <mikasa33@qq.com>",
+  "homepage": "https://github.com/Mikasa33/a4v#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikasa33/a4v.git"
+  },
+  "bugs": "https://github.com/Mikasa33/a4v/issues",
   "scripts": {
     "build:web": "pnpm --filter a4v-web build",
     "build:docs": "pnpm --filter a4v-docs build",
@@ -33,6 +40,7 @@
     "@a4v/unocss": "workspace:*",
     "@types/node": "^22.7.5",
     "@unocss/eslint-plugin": "^0.62.4",
+    "automd": "^0.3.12",
     "cspell": "^8.14.4",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
