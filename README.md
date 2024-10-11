@@ -68,6 +68,9 @@ pnpm up
 ```bash
 pnpm lint
 pnpm lint:fix
+
+pnpm style
+pnpm style:fix
 ```
 
 ## License
