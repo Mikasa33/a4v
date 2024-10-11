@@ -163,6 +163,7 @@ const sidebarComponents: DefaultTheme.SidebarItem[] = [
 
 // https://vitepress.dev
 export default defineConfig({
+  base: '/a4v/',
   description: 'admin for vue',
   head,
   markdown: {
