@@ -8,7 +8,9 @@ const theme = ref<GlobalTheme | null>(null)
 </script>
 
 <template>
-  <AConfigProvider :global-style="false" :theme>
+  <!-- 设置 global-style 是为了解决在文档中的报错问题，平时可以正常使用 -->
+  <!-- abstract inline-theme-disabled 是为了解决在文档中的相关问题  -->
+  <AConfigProvider :global-style="false" abstract inline-theme-disabled>
     <NCard>
       <NFlex>
         <NButton @click="theme = darkTheme">
