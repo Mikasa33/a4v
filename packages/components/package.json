@@ -14,7 +14,7 @@
       "require": "./lib/resolver.cjs"
     }
   },
-  "main": "./lib/index.mjs",
+  "main": "./es/index.mjs",
   "module": "./es/index.mjs",
   "types": "./es/index.d.ts",
   "files": [
