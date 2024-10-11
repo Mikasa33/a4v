@@ -43,11 +43,11 @@ const contentClass = computed(() => {
 
     <NEl class="wh-full flex flex-col overflow-hidden bg-[var(--hover-color)] dark:bg-[var(--body-color)]">
       <RouterView #="{ Component, route }">
-        <Transition appear mode="out-in" :name="info.page.animate ? info.page.animateMode : undefined">
-          <NScrollbar>
+        <NScrollbar>
+          <Transition appear mode="out-in" :name="info.page.animate ? info.page.animateMode : undefined">
             <Component :is="Component" :key="route.path" class="wh-full flex" />
-          </NScrollbar>
-        </Transition>
+          </Transition>
+        </NScrollbar>
       </RouterView>
     </NEl>
 
