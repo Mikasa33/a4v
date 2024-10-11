@@ -36,7 +36,8 @@ function handleShowNotification() {
 
 <template>
   <!-- 设置 global-style 是为了解决在文档中的报错问题，平时可以正常使用 -->
-  <AConfigProvider :global-style="false">
+  <!-- abstract inline-theme-disabled 是为了解决在文档中的相关问题  -->
+  <AConfigProvider :global-style="false" abstract inline-theme-disabled>
     <NFlex>
       <NButton @click="handleShowDialog">
         $dialog

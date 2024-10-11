@@ -256,7 +256,7 @@ export default defineConfig({
       port: 7778,
     },
     ssr: {
-      noExternal: ['naive-ui', 'date-fns', 'vueuc'],
+      noExternal: ['naive-ui', 'date-fns', 'vueuc', '@a4v/components'],
     },
   },
 })

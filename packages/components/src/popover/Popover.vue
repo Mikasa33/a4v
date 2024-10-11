@@ -3,20 +3,19 @@ import type { CardProps, PopoverProps } from 'naive-ui'
 import type { PopoverSlots } from './types'
 import { omit } from 'lodash-es'
 import { cardProps as nCardProps, NPopover, popoverProps as nPopoverProps } from 'naive-ui'
+import { useCssr } from '../composables'
 import { APopupCard } from '../popup-card'
 import { pickProps } from '../utils'
 import { cssr } from './cssr'
 import { popoverProps } from './props'
-
-defineOptions({
-  name: 'NpPopover',
-})
 
 const props = defineProps(popoverProps)
 const emits = defineEmits<{
   confirm: []
 }>()
 const slots = defineSlots<PopoverSlots>()
+
+useCssr(cssr)
 
 const show = defineModel<boolean>('show')
 
@@ -29,8 +28,6 @@ function handleCancel() {
 function handleConfirm() {
   emits('confirm')
 }
-
-cssr.mount()
 </script>
 
 <template>

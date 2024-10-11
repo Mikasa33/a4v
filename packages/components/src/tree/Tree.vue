@@ -3,6 +3,7 @@ import type { TreeOption, TreeProps } from 'naive-ui'
 import type { TreeSlots } from './types'
 import { isArray } from 'lodash-es'
 import { NEmpty, NFlex, NSpin, NTree, treeProps as nTreeProps } from 'naive-ui'
+import { useCssr } from '../composables'
 import { useRequest } from '../composables/useRequest'
 import { useSlotsFilter } from '../composables/useSlotsFilter'
 import { pickProps } from '../utils'
@@ -11,6 +12,8 @@ import { treeProps } from './props'
 
 const props = defineProps(treeProps)
 const slots = defineSlots<TreeSlots>()
+
+useCssr(cssr)
 
 const checkedKeys = defineModel<Array<number | string>>('checkedKeys', { default: () => [] })
 const data = defineModel<Array<TreeOption>>('data', { default: () => [] })
@@ -72,8 +75,6 @@ function renderSuffix(node: { option: TreeOption, checked: boolean, selected: bo
   // 节点后缀内容
   return node.option.suffix
 }
-
-cssr.mount()
 
 defineExpose({
   reload: execute,

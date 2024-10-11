@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue'
 import { watchDebounced } from '@vueuse/core'
 import { NInput, NInputGroup, inputProps as nInputProps, NSelect } from 'naive-ui'
 import { computed, watch } from 'vue'
+import { useCssr } from '../composables'
 import { pickProps } from '../utils'
 import { cssr } from './cssr'
 import { searchKeywordProps } from './props'
@@ -14,6 +15,8 @@ const emits = defineEmits<{
   search: [value: string | null, field: string | number | null]
 }>()
 defineSlots<SearchKeywordSlots>()
+
+useCssr(cssr)
 
 const value = defineModel<string | null>('value', { default: null })
 const field = defineModel<string | number | null>('field', { default: null })
@@ -42,8 +45,6 @@ watchDebounced(
     debounce: props.debounce,
   },
 )
-
-cssr.mount()
 </script>
 
 <template>

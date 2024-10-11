@@ -5,6 +5,7 @@ import { Icon } from '@iconify/vue'
 import { isNil, isString } from 'lodash-es'
 import { NButton, NDropdown, NEl, NFlex, NText, NTooltip } from 'naive-ui'
 import { ref } from 'vue'
+import { useCssr } from '../composables'
 import { ADrawer } from '../drawer'
 import { AFlex1 } from '../flex'
 import { AForm } from '../form'
@@ -23,6 +24,8 @@ const emits = defineEmits<{
   delete: [node: any]
 }>()
 defineSlots<AdvTreeSlots>()
+
+useCssr(cssr)
 
 const treeRef = ref()
 const formRef = ref()
@@ -166,8 +169,6 @@ function PopupCardBtns() {
     </NFlex>
   )
 }
-
-cssr.mount()
 </script>
 
 <template>

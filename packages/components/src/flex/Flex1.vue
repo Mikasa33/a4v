@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { useCssr } from '../composables'
 import { cssr } from './cssr'
 
-cssr.mount()
+useCssr(cssr)
 </script>
 
 <template>

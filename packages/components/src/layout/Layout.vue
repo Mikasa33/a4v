@@ -3,6 +3,7 @@ import type { CSSProperties } from 'vue'
 import type { LayoutProps, LayoutSlots } from './types'
 import { addUnit } from '@a4v/utils'
 import { computed } from 'vue'
+import { useCssr } from '../composables'
 import { cssr } from './cssr'
 
 const {
@@ -16,6 +17,8 @@ const {
   sidebarWidth = 240,
 } = defineProps<LayoutProps>()
 defineSlots<LayoutSlots>()
+
+useCssr(cssr)
 
 const collapsed = defineModel<boolean>('collapsed', { default: false })
 const sidebarCollapsedWidthStr = computed(() => addUnit(sidebarCollapsedWidth))
@@ -49,8 +52,6 @@ const sidebarTransform = computed(() => `translateX(-${sidebarResultWithStr.valu
 const style = computed(() => ({
   '--a-layout-sidebar-transform': sidebarTransform.value,
 }))
-
-cssr.mount()
 </script>
 
 <template>

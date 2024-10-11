@@ -14,7 +14,7 @@
       "require": "./lib/resolver.cjs"
     }
   },
-  "main": "./es/index.mjs",
+  "main": "./lib/index.cjs",
   "module": "./es/index.mjs",
   "types": "./es/index.d.ts",
   "files": [
@@ -24,6 +24,7 @@
   "scripts": {
     "build": "vue-tsc -b && rimraf *.tsbuildinfo && vite build",
     "dev": "pnpm build --watch",
+    "postinstall": "pnpm stub",
     "stub": "pnpm build"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
     "@css-render/plugin-bem": "^0.15.14",
+    "@css-render/vue3-ssr": "^0.15.14",
     "@iconify-json/icon-park-outline": "^1.2.0",
     "@iconify/vue": "^4.1.2",
     "@types/lodash-es": "^4.17.12",

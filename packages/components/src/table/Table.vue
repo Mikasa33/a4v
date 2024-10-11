@@ -4,6 +4,7 @@ import type { TableColumnProps, TableSlots } from './types'
 import { cloneDeep, isArray, isObject, isString } from 'lodash-es'
 import { dataTableProps, NDataTable, NFlex } from 'naive-ui'
 import { computed, h, ref } from 'vue'
+import { useCssr } from '../composables'
 import { useRequest } from '../composables/useRequest'
 import { useSlotsFilter } from '../composables/useSlotsFilter'
 import { pickProps } from '../utils'
@@ -13,6 +14,8 @@ import { tableProps } from './props'
 
 const props = defineProps(tableProps)
 const slots = defineSlots<TableSlots>()
+
+useCssr(cssr)
 
 const checkedRowKeys = defineModel<Array<number | string>>('checkedRowKeys', { default: () => ([]) })
 const data = defineModel<Array<Record<string, any>>>('data', { default: () => [] })
@@ -148,8 +151,6 @@ function getLoading(): boolean {
 function getPagination(): boolean | PaginationProps {
   return pagination.value
 }
-
-cssr.mount()
 
 defineExpose({
   getCheckedRowKeys,

@@ -4,6 +4,7 @@ import { Icon } from '@iconify/vue'
 import { isNil, isString } from 'lodash-es'
 import { NButton, NEl, NFlex, NTooltip } from 'naive-ui'
 import { computed, ref } from 'vue'
+import { useCssr } from '../composables'
 import { useFullscreen } from '../composables/useFullscreen'
 import { useSlotsFilter } from '../composables/useSlotsFilter'
 import { ADrawer } from '../drawer'
@@ -23,6 +24,8 @@ const emits = defineEmits<{
   delete: [row: any]
 }>()
 const slots = defineSlots<AdvTableSlots>()
+
+useCssr(cssr)
 
 const tableProps = pickProps(props, ATableProps)
 const title = '筛选'
@@ -166,8 +169,6 @@ function PopupCardBtns() {
     </NFlex>
   )
 }
-
-cssr.mount()
 
 defineExpose<AdvTableInstance>({
   ...tableRef.value,

@@ -7,6 +7,7 @@ import { useFullscreen } from '@vueuse/core'
 import { omit } from 'lodash-es'
 import { NButton, NCard, cardProps as nCardProps, NFlex, NScrollbar } from 'naive-ui'
 import { ref } from 'vue'
+import { useCssr } from '../composables'
 import { pickProps } from '../utils'
 import { cssr } from './cssr'
 import { popupCardProps } from './props'
@@ -17,6 +18,8 @@ const emits = defineEmits<{
   confirm: []
 }>()
 const slots = defineSlots<PopupCardSlots>()
+
+useCssr(cssr)
 
 const cardProps = pickProps<CardProps>(props, omit(nCardProps, 'closable'))
 
@@ -37,8 +40,6 @@ function IconBtn(_: any, { slots }: { slots: Slots }) {
     </NButton>
   )
 }
-
-cssr.mount()
 </script>
 
 <template>

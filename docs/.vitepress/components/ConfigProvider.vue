@@ -8,7 +8,7 @@ const theme = computed(() => isDark.value ? darkTheme : null)
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme>
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme abstract inline-theme-disabled>
     <NDialogProvider>
       <NLoadingBarProvider>
         <NMessageProvider>
