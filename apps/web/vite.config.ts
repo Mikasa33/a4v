@@ -1,12 +1,13 @@
 import process from 'node:process'
 import { VitePluginAppLoading } from '@a4v/vite-plugin-app-loading'
+import { VitePluginNitroMock } from '@a4v/vite-plugin-nitro-mock'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Vue from '@vitejs/plugin-vue'
-import VueJsx from '@vitejs/plugin-vue-jsx'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import VueComponent from 'unplugin-vue-components/vite'
+import VueJsx from 'unplugin-vue-jsx/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
@@ -81,6 +82,7 @@ export default defineConfig(async (config) => {
           },
         ],
         dirs: [
+          'src/apis',
           'src/composables',
           'src/hooks',
           'src/stores',
@@ -100,13 +102,26 @@ export default defineConfig(async (config) => {
         title: env.VITE_APP_TITLE,
       }),
 
+      env.VITE_NITRO_MOCK === 'true' && VitePluginNitroMock({
+        rootDir: '../mock',
+        port: Number(env.VITE_NITRO_MOCK_PORT),
+      }),
+
       // https://unocss.dev/integrations/vite
       Unocss(),
     ],
     server: {
       host: true,
       open: true,
-      port: 7777,
+      port: Number(env.VITE_PORT),
+      proxy: {
+        '/api': {
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/api/, ''),
+          target: `http://localhost:${env.VITE_NITRO_MOCK_PORT}/api`,
+          ws: true,
+        },
+      },
     },
   }
 })

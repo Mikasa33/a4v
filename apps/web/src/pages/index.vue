@@ -1,5 +1,14 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const [loading, toggle] = useToggle()
+const { info } = userApi()
+const data = ref()
+async function request() {
+  toggle()
+  data.value = await info()
+  toggle()
+}
+request()
 </script>
 
 <template>
@@ -16,6 +25,15 @@ const { t } = useI18n()
       <NDivider />
 
       <NDataTable />
-    </NCard>
+
+      <NDivider />
+
+      <NAlert :show-icon="false">
+        <div v-if="loading">
+          请求中...
+        </div>
+        <pre v-else>{{ data }}</pre>
+      </NAlert>
+    </nCard>
   </div>
 </template>

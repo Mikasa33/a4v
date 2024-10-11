@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ALayout: typeof import('./components/layout/ALayout.vue')['default']
     Layout: typeof import('./components/layout/Layout.vue')['default']
+    NAlert: typeof import('naive-ui')['NAlert']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
