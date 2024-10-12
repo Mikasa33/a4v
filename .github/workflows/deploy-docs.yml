@@ -49,12 +49,6 @@ jobs:
       - name: Build Docs
         run: pnpm build:docs # 或 pnpm build:docs / yarn build:docs / bun run build:docs
 
-  # 部署工作
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4.6.8
         with:

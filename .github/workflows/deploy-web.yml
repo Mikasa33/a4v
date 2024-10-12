@@ -49,12 +49,6 @@ jobs:
       - name: Build Web
         run: pnpm build:web # 或 pnpm build:web / yarn build:web / bun run build:web
 
-  # 部署工作
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
       - name: Deploy Web
         uses: JamesIves/github-pages-deploy-action@v4.6.8
         with:
