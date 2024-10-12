@@ -1,8 +1,0 @@
-{
-  "extends": "@a4v/tsconfig/node.json",
-  "compilerOptions": {
-    "composite": true,
-    "noEmit": false
-  },
-  "include": ["vite.config.ts"]
-}

@@ -22,7 +22,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "vue-tsc -b && rimraf *.tsbuildinfo && vite build",
+    "build": "vue-tsc -b && vite build",
     "dev": "pnpm build --watch",
     "postinstall": "pnpm stub",
     "stub": "pnpm build"
@@ -46,8 +46,6 @@
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "css-render": "^0.15.14",
-    "rimraf": "^6.0.1",
-    "typescript": "^5.6.2",
     "unocss": "^0.62.4",
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.3.6",
