@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@a4v/tsconfig": "workspace:*",
+    "@a4v/types": "workspace:*",
     "@types/lodash-es": "^4.17.12"
   }
 }
