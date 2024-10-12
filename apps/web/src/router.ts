@@ -2,7 +2,7 @@ import type { App } from 'vue'
 import { usePreference } from '@a4v/preference'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { setupLayouts } from 'virtual:generated-layouts'
-import { createRouter, createWebHistory } from 'vue-router/auto'
+import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
 const { start, done } = useNProgress(null, {
@@ -10,7 +10,7 @@ const { start, done } = useNProgress(null, {
 })
 
 export const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: setupLayouts(routes),
 })
 
