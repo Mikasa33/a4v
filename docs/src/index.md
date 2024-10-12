@@ -15,7 +15,7 @@ hero:
       link: /guide/introduction/a4v
     - theme: alt
       text: 在 Github 查看
-      link: https://github.com/Mikasa33/a4v
+      link: https://github.com/Mikasa33/a4v/
 
 features:
   - icon: 🚀
