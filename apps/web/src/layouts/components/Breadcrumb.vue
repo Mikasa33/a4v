@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { menus } from '#/settings/menu'
+// import { menus } from '#/settings/menu'
 
 const route = useRoute()
 const router = useRouter()
 
 const breadcrumbs = computed(() => {
   return [
-    ...findParentNodes(menus, route.path),
+    // ...findParentNodes(menus, route.path),
     {
       path: route.path,
       label: route.meta.title,
