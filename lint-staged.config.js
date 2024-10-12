@@ -3,6 +3,6 @@ export default {
     'eslint --fix',
   ],
   '*.{css,html,sass,scss,vue}': [
-    'stylelint --fix',
+    'stylelint \"**/*.{css,html,sass,scss,vue}\" \"**/.vitepress/**/*.{css,html,sass,scss,vue}\" --fix',
   ],
 }
