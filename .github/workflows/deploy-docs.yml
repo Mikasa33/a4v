@@ -25,8 +25,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # 构建工作
-  build:
+  # 构建和部署
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
