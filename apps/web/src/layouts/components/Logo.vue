@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { usePreference } from '@a4v/preference'
 
-const logo = import.meta.env.VITE_APP_LOGO
 const title = import.meta.env.VITE_APP_TITLE
 
 const router = useRouter()
@@ -28,7 +27,7 @@ function go() {
     :style="{ width, height: `${info.header.height}px` }"
     @click="go"
   >
-    <img :src="logo" class="h-32px">
+    <img src="/logo.svg" class="h-32px">
     <div
       v-if="info.layoutMode === 'horizontal' || !info.sidebar.collapsed"
       class="ml-8px whitespace-nowrap text-20px font-700"

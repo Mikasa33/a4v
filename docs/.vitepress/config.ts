@@ -39,7 +39,7 @@ const search: DefaultTheme.Config['search'] = {
 const nav: DefaultTheme.NavItem[] = [
   { activeMatch: '^/guide/', link: '/guide/introduction/a4v', text: '指南' },
   { activeMatch: '^/components/', link: '/components/form', text: '组件' },
-  { link: 'https://github.com/Mikasa33/a4v', text: '演示' },
+  { link: 'https://mikasa33.github.io/a4v/web/', text: '演示' },
 ]
 
 const sidebarGuide: DefaultTheme.SidebarItem[] = [
