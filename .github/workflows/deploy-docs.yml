@@ -47,7 +47,7 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install
 
       - name: Build Docs
-        run: pnpm build:web # 或 pnpm build:web / yarn build:web / bun run build:web
+        run: pnpm build:docs # 或 pnpm build:docs / yarn build:docs / bun run build:docs
 
   # 部署工作
   deploy:
