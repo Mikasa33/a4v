@@ -1,0 +1,1 @@
+import{j as s,y as _,A as c,B as t,C as e,_ as r,D as u,F as p,G as l,H as d,J as i}from"./index-BP_t0IPg.js";const m={class:"p-16px"},N=s({__name:"about",setup(f){const{t:o}=_();return(x,B)=>{const n=i,a=r;return u(),c("div",m,[t(a,{bordered:!1},{default:e(()=>[t(n,null,{default:e(()=>[p(l(d(o)("about")),1)]),_:1})]),_:1})])}}});export{N as default};
