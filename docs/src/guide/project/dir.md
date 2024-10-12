@@ -4,6 +4,7 @@
 
 ```bash
 .
+├── .github # github 配置
 ├── .husky # husky 配置
 ├── .vscode # vscode 配置
 ├── apps # 项目应用目录
