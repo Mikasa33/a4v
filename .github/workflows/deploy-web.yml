@@ -45,7 +45,7 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install
 
       - name: Build Web
-        run: pnpm build:web # 或 pnpm build:web / yarn build:web / bun run build:web
+        run: pnpm build:web:gh-pages
 
       - name: Deploy Web
         uses: JamesIves/github-pages-deploy-action@v4.6.8

@@ -5,8 +5,9 @@
   "private": true,
   "packageManager": "pnpm@9.12.1",
   "scripts": {
-    "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "build:gh-pages": "pnpm build --base=/a4v/web/",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "imports": {

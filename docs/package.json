@@ -6,6 +6,7 @@
   "packageManager": "pnpm@9.12.1",
   "scripts": {
     "build": "vitepress build",
+    "build:gh-pages": "pnpm build --base=/a4v/docs/",
     "dev": "vitepress dev",
     "preview": "vitepress preview"
   },

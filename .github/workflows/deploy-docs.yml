@@ -45,7 +45,7 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install
 
       - name: Build Docs
-        run: pnpm build:docs # 或 pnpm build:docs / yarn build:docs / bun run build:docs
+        run: pnpm build:docs:gh-pages
 
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4.6.8

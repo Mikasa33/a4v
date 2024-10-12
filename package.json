@@ -13,7 +13,9 @@
   "bugs": "https://github.com/Mikasa33/a4v/issues",
   "scripts": {
     "build:web": "pnpm --filter @a4v/web build",
+    "build:web:gh-pages": "pnpm --filter @a4v/web build:gh-pages",
     "build:docs": "pnpm --filter @a4v/docs build",
+    "build:docs:gh-pages": "pnpm --filter @a4v/docs build:gh-pages",
     "check": "cspell lint **/*.ts **/README.md --no-progress",
     "clean": "node ./scripts/clean.js",
     "cz": "czg",
