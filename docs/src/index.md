@@ -42,7 +42,7 @@ features:
     icon:
       src: /logos/nitro.svg
       height: 48
-    details: 内置 Nitro Mock 服务，让你的 mock 服务更加强大。
+    details: 内置 Nitro Mock 服务，让你的 Mock 服务更加强大。
   - title: Naive UI
     icon:
       src: /logos/naive-ui.svg
